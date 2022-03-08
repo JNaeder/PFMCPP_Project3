@@ -53,51 +53,51 @@ Sub Object 1: Steering Wheel
     Name 4 things you'll find on the:    Steering Wheel
         1) paddle shifters
         2) 'cruise control' controls
-        3) 
-        4) 
+        3) car manufacturer logo
+        4) media buttons
     Name 2 things you can do with the:   Steering Wheel
         1) adjust cruise control settings.
-        2)
+        2) adjust media/volume/calls
         
 Sub Object 2: Instrument Cluster
     Name 4 things you'll find on the:   Instrument Cluster
-        1)
-        2)
-        3)
-        4)
+        1) Speedometer
+        2) Check Engine Light
+        3) Gas level
+        4) Odometer
     Name 3 things you can do with the:   Instrument Cluster
-        1)
-        2)
-        3)
+        1) Get current gas level
+        2) Get engine status
+        3) Get current speed
     
 Sub Object 3: Environment Controls
     Name 3 things you'll find on the:    Environment Controls
-        1)
-        2)
-        3)
+        1) Fan speed controls
+        2) Temprature controls
+        3) Heated seat controls
     Name 3 things you can do with the:   Environment Controls
-        1)
-        2)
-        3)
+        1) Turn on heated seats
+        2) Set temprature
+        3) Adjust fan speed
 
 Sub Object 4: Infotainment System
     Name 3 things you'll find on the:    Infotainment System
-        1)
-        2)
-        3)
+        1) Play/Pause song button
+        2) Make phone call button
+        3) Volume Knob
     Name 3 things you can do with the:   Infotainment System
-        1)
-        2)
-        3)
+        1) Adjust the volume
+        2) Play song
+        3) Call a friend
 
 Sub Object 5: Seat 
     Name 3 things you'll find on the:    Seat
-        1)
-        2)
-        3)
+        1) Height adjustment button
+        2) Back adjustment lever
+        3) Cushion
     Name 2 things you can do with the:   Seat
-        1)
-        2)
+        1) Push the seat back
+        2) raise the seat up
 */
 
 /*
@@ -153,62 +153,6 @@ Part 1b Assignment: 1 Step
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 */
-
-/*
-Thing 1)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 2)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 3)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
 
  /*
 Part 1c - Lesson
@@ -278,20 +222,6 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 */
-
-/*
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
 
 /*
 Part 1d - Lesson
@@ -385,76 +315,6 @@ Step 3 is written below UDTs 5 - 9
 */
 
 /*
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
 ===================
 Part 1d assignment: Step 3
 ===================
@@ -472,8 +332,145 @@ After you have MOVED your 10 UDTs, send me a DM with your pull request link.
 I will review the pseudo-code that you have written.
 */
 
+/*
+Thing 1) Electric Guitar
+5 properties:
+    1) Brand (std::string)
+    2) Model (std::string)
+    3) Number of srings (int)
+    4) Number of pickups (int)
+    5) Number of controls (int)
+3 things it can do:
+    1) Control volume
+    2) Make sound from strings
+    3) Change pickups
+ */
 
+/*
+Thing 2) iPhone
+5 properties:
+    1) Version of iPhone (float)
+    2) Amount of space (float)
+    3) Phone carrier (std::string)
+    4) Camera model (std::string)
+    5) Number of accessories (int)
+3 things it can do:
+    1) Take photos
+    2) Make phone calls
+    3) Go on internet
+ */
 
+/*
+Thing 3) My Refrigerator
+5 properties:
+    1) Number of eggs (int)
+    2) Number of vegetables (int)
+    3) Current temperature of fridge (float)
+    4) Percentage full (float)
+    5) Current temperature of freezer (float)
+3 things it can do:
+    1) Change the temperature of fridge
+    2) Change the temperature of freezer
+    3) Return number food items in fridge
+ */
+
+/*
+Thing 4) Tape machine
+5 properties:
+    1) Number of tracks (int)
+    2) Current speed in IPS (int)
+    3) Current timecode (double)
+    4) Current play status (std::string)
+    5) Model of Machine (std::string)
+3 things it can do:
+    1) Play tape
+    2) Show timecode
+    3) Change speed in IPS
+ */
+
+/*
+Thing 5) Display
+5 properties:
+    1) Number of pixels (int)
+    2) Brightness level (float)
+    3) Width (float)
+    4) Height (float)
+    5) Energy consumed (float)
+3 things it can do:
+    1) Show visuals
+    2) Change brightness
+    3) Consume energy
+ */
+
+/*
+Thing 6) Controls
+5 properties:
+    1) Number of Start Buttons (int)
+    2) Number of Select Buttons (int)
+    3) Number of D pads (int)
+    4) Number of other buttons (int)
+    5) Energy consumed (float)
+3 things it can do:
+    1) Take input from user
+    2) Pause game
+    3) Start Game
+ */
+
+/*
+Thing 7) Logic Board
+5 properties:
+    1) Amount of RAM (int)
+    2) Speed of CPU (float)
+    3) Number of connections (int)
+    4) Energy consumer (float)
+    5) Speed of GPU (float)
+3 things it can do:
+    1) Process data
+    2) Show video output
+    3) Interfact with connections
+ */
+
+/*
+Thing 8) Game
+5 properties:
+    1) Amount of stoage used (float)
+    2) Name of game (std::string)
+    3) Amount of memory needed (float)
+    4) Name of Developer (std::string)
+    5) Price of game (float)
+3 things it can do:
+    1) Load levels
+    2) Take input from controls
+    3) Output video signals
+ */
+
+/*
+Thing 9) Outside Case
+5 properties:
+    1) Color (std::string)
+    2) Width (float)
+    3) Height (float)
+    4) Depth (float)
+    5) Number of LED lights (int)
+3 things it can do:
+    1) Protect insides
+    2) Display cool color
+    3) Light up
+ */
+
+/*
+Thing 10) Gameboy
+5 properties:
+    1) Display
+    2) Controls
+    3) Logic Board
+    4) Game
+    5) Outside Case
+3 things it can do:
+    1) Show visuals
+    2) Play sounds
+    3) Get input from user
+ */
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH

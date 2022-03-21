@@ -125,67 +125,43 @@ struct CarWash
  if your code produces a -Wpadded warning, add '-Wno-padded' to the .replit file with the other compiler flags (-Weverything -Wno-missing-prototypes etc etc)
  */
 
-
-/*
-Thing 1) Electric Guitar
-5 properties:
-    1) Brand (std::string)
-    2) Model (std::string)
-    3) Number of srings (int)
-    4) Number of pickups (int)
-    5) Number of controls (int)
-3 things it can do:
-    1) Control volume
-    2) Make sound from strings
-    3) Change pickups
- */
-
+// --------------------------------------------------------------------------
 struct ElectricGuitar
 {
-//     1) Brand (std::string)
     std::string brandName = "Gibson";
-//     2) Model (std::string)
-    std::string model = "Les Paul";    
-//     3) Number of srings (int)
-    int numberOfString = 6;
-//     4) Number of pickups (int)
+    std::string model = "Les Paul";
+    int numberOfStringsOnGuitar = 6;
     int numberOfPickups = 2;
-//     5) Number of controls (int)
     int numberOfControls = 4;
-//     1) Control volume
+    float volume = 0;
+    int currentPickup = 0;
     void controlVolume(float newVolume);
-//     2) Make sound from strings
-    void makeSoundWithStrings(int fretPosition, int numberOfStrings);
-//     3) Change pickups
-    int switchPickup(int switchPosition = 0); // returns the new pickup number
+    void makeSoundWithStrings(int fretPosition, int numberOfStringsToPlay);
+    int switchPickup(int switchPosition = 0);
 };
 
-
-/*
-Thing 2) iPhone
-5 properties:
-    1) Version of iPhone (float)
-    2) Amount of space (float)
-    3) Phone carrier (std::string)
-    4) Camera model (std::string)
-    5) Number of accessories (int)
-3 things it can do:
-    1) Take photos
-    2) Make phone calls
-    3) Go on internet
- */
-
-struct iPhone FIXME: type names need to begin with a capital letter
+void ElectricGuitar::controlVolume(float newVolume)
 {
-//     1) Version of iPhone (float)
+    volume = newVolume;
+}
+
+void ElectricGuitar::makeSoundWithStrings(int fretPosition, int numberOfStringsToPlay)
+{
+    numberOfStringsOnGuitar -= numberOfStringsToPlay * fretPosition;
+}
+
+int ElectricGuitar::switchPickup(int switchPosition)
+{
+    return switchPosition - currentPickup;
+}
+
+// --------------------------------------------------------------------------
+struct IPhone
+{
     float version = 1.0f;
-//     2) Amount of space (float)
     float amountOfHardDriveSpace = 500.0f;
-//     3) Phone carrier (std::string)
     std::string phoneCarrier = "Verizon";
-//     4) Camera model (std::string)
     std::string cameraModel = "SuperGoodCamera";
-//     5) Number of accessories (int)
     int numberOfAccessories = 9;
 
     struct Camera
@@ -200,166 +176,152 @@ struct iPhone FIXME: type names need to begin with a capital letter
         void changeISO(float newISOValue);
         void captureImage(int numberOfImages);
     };
-
-//     1) Take photos
     void takePhotos(int numberOfPhotos, std::string typeOfPhoto, Camera theCamera);
-//     2) Make phone calls
     void makePhoneCall(int phoneNumber, std::string nameOfcontact);
-//     3) Go on internet
-    void connectToInternet(int IPAddress);
+    void connectToInternet(int ipAddress);
 };
 
-/*
-Thing 3) My Refrigerator
-    1) Number of eggs (int)
-    2) Number of vegetables (int)
-    3) Current temperature of fridge (float)
-    4) Percentage full (float)
-    5) Current temperature of freezer (float)
-    1) Change the temperature of fridge
-    2) Change the temperature of freezer
-    3) Return number food items in fridge
- */
+void IPhone::takePhotos(int numberOfPhotos, std::string typeOfPhoto, IPhone::Camera theCamera)
+{
+    for(int i = 0; i < numberOfPhotos; i++)
+        {
+            std::cout << typeOfPhoto << " " << theCamera.manufactuer;   
+        }
+}
 
+void IPhone::makePhoneCall(int phoneNumber, std::string nameOfContact)
+{
+    std::cout << "Call " << nameOfContact << " at " << phoneNumber << std::endl;
+}
+
+void IPhone::connectToInternet(int ipAddress)
+{
+    std::cout << "Connecting to " << ipAddress << std::endl;
+}
+
+// --------------------------------------------------------------------------
 struct MyRefrigerator
 {
-//     1) Number of eggs (int)
     int numberOfEggs = 12;
-//     2) Number of vegetables (int)
     int numberOfVegetables = 5;
-//     3) Current temperature of fridge (float)
     float tempOfFridge = 40.0f;
-//     4) Percentage full (float)
     float percentageFull = 45.5f;
-//     5) Current temperature of freezer (float)
     float tempOfFreezer = 30.0f;
-//     1) Change the temperature of fridge
     void changeFridgeTemperature(float newTemperature);
-//     2) Change the temperature of freezer
     void changeFreezeTemperature(float newTemperature);
-//     3) Return number food items in fridge
-    int numberOfItemsInFridge(); //returns items 
+    int numberOfItemsInFridge();
 };
 
-/*
-Thing 4) Tape machine
-    1) Number of tracks (int)
-    2) Current speed in IPS (int)
-    3) Current timecode (double)
-    4) Current play status (std::string)
-    5) Model of Machine (std::string)
-    1) Play tape
-    2) Show timecode
-    3) Change speed in IPS
- */
+void MyRefrigerator::changeFridgeTemperature(float newTemperature)
+{
+    tempOfFridge = newTemperature;
+}
 
+void MyRefrigerator::changeFreezeTemperature(float newTemperature)
+{
+    tempOfFreezer = newTemperature;
+}
+
+int MyRefrigerator::numberOfItemsInFridge()
+{
+    return numberOfEggs + numberOfVegetables;
+}
+
+// --------------------------------------------------------------------------
 struct TapeMachine
 {
-//     1) Number of tracks (int)
     int numberOfTracks = 24;
-//     2) Current speed in IPS (float)
-    float speedInIPS = 30.0f;
-//     3) Current timecode (double)
-    double currentTime = 0.00;
-//     4) Current play status (std::string)
+    float currentSpeedInIPS = 30.0f;
+    double currentTimecode = 0.00;
     std::string playStatus = "stopped";
-//     5) Model of Machine (std::string)
     std::string model = "Studer";
-//     1) Play tape
     void play(float speedInIPS, double fromTime);
-//     2) Show timecode
-    double showTimeCode(double currentTime); // returns the current timecode
-//     3) Change speed in IPS
+    double showTimeCode(double currentTime);
     void changeSpeedInIPS(float newSpeed);
 };
 
-/*
-Thing 5) Display
-    1) Number of pixels (int)
-    2) Brightness level (float)
-    3) Width (float)
-    4) Height (float)
-    5) Energy consumed (float)
-    1) Show visuals
-    2) Change brightness
-    3) Consume energy
- */
+void TapeMachine::play(float speedInIPS, double fromTime)
+{
+    std::cout << "Playing tape from " << fromTime << " at " << speedInIPS << " inches per second."<< std::endl;
+}
 
+double TapeMachine::showTimeCode(double currentTime)
+{
+    currentTimecode = currentTime;
+    return currentTimecode;
+}
+
+void TapeMachine::changeSpeedInIPS(float newSpeed)
+{
+    currentSpeedInIPS = newSpeed;
+}
+
+// --------------------------------------------------------------------------
 struct Display
 {
-//     1) Number of pixels (int)
     int numberOfPixels = 1080;
-//     2) Brightness level (float)
     float brightnessLevel = 75.0f;
-//     3) Width (float)
     float width = 3.5f;
-//     4) Height (float)
     float height = 3.0f;
-//     5) Energy consumed (float)
     float energyConsumed = 50.0f;
-//     1) Show visuals
     void showVisuals(int pixelsToChange);
-//     2) Change brightness
     void changeBrightness(float newBrightnessLevel);
-//     3) Consume energy
     void consumeEnergy (float amountOfEnergyToConsume = 0);
 };
 
-/*
-Thing 6) Controls
-    1) Number of Start Buttons (int)
-    2) Number of Select Buttons (int)
-    3) Number of D pads (int)
-    4) Number of other buttons (int)
-    5) Energy consumed (float)
-    1) Take input from user
-    2) Pause game
-    3) Start Game
- */
+void Display::showVisuals(int pixelsToChange)
+{
+    for(int i = 0; i < pixelsToChange; i++)
+        {
+            std::cout << "Changed Pixel!" << std::endl;
+        }
+}
 
+void Display::changeBrightness(float newBrightnessLevel)
+{
+    brightnessLevel = newBrightnessLevel;
+}
+
+void Display::consumeEnergy(float amountOfEnergyToConsume)
+{
+    energyConsumed -= amountOfEnergyToConsume;
+}
+
+// --------------------------------------------------------------------------
 struct Controls
 {
-//     1) Number of Start Buttons (int)
     int numberOfStartButtons = 1;
-//     2) Number of Select Buttons (int)
     int numberOfSelectButtons = 1;
-//     3) Number of D pads (int)
     int numberOfDpads = 1;
-//     4) Number of other buttons (int)
     int numberOfOtherButtons = 2;
-//     5) Energy consumed (float)
     float energyConsumed = 50.0f;
-//     1) Take input from user
     void takeUserInput(int numberOfButtonsPressed, int dpadDirection);
-//     2) Pause game
     void pauseGame(std::string gameName);
-//     3) Start Game
     void startGame(std::string gameName);
 };
 
-/*
-Thing 7) Logic Board
-    1) Amount of RAM (int)
-    2) Speed of CPU (float)
-    3) Number of connections (int)
-    4) Energy consumer (float)
-    5) Speed of GPU (float)
-    1) Process data
-    2) Show video output
-    3) Interfact with connections
- */
+void Controls::takeUserInput(int numberOfButtonsPressed, int dpadDirection)
+{
+    std::cout << numberOfButtonsPressed << " buttons pressed. D-Pad direction is " << dpadDirection << std::endl;
+}
 
+void Controls::pauseGame(std::string gameName)
+{
+    std::cout << gameName << " is paused!" << std::endl;
+}
+
+void Controls::startGame(std::string gameName)
+{
+    std::cout << gameName << " has started!" << std::endl;
+}
+
+// --------------------------------------------------------------------------
 struct LogicBoard
 {
-//     1) Amount of RAM (int)
     int amountOfRam = 4;
-//     2) Speed of CPU (float)
     float speedOfCPU = 1.3f;
-//     3) Number of connections (int)
     int numberOfConnections = 3;
-//     4) Energy consumer (float)
     float energyConsumed = 50.0f;
-//     5) Speed of GPU (float)
     float speedOfGPU = 1.2f;
 
     struct CPU
@@ -369,115 +331,118 @@ struct LogicBoard
         std::string manufactuer = "AMD";
         float overclockedSpeed = 2.0f;
         float currentTemperature = 80.4f;
-
         void performComputation(int binaryValue1, int binaryValue2);
         void overclock(float newOverclockSPeed = 2.0f);
-        float returnTempFromCore (int cpuCore); //returns temp of one of the cores
+        float returnTempFromCore (int cpuCore);
     };
-
-//     1) Process data
-    void processData(float inputData1, int inputData2, CPU cpu);
-//     2) Show video output
-    void showVideoOutput(float inputData1, int pixelsUsed, Display targetDisplay, CPU cpu);
-//     3) Interfact with connections
+    void processData(int inputData1, int inputData2, CPU cpu);
+    void showVideoOutput(int inputData1, int pixelsUsed, Display targetDisplay, CPU cpu);
     void takeInputFromConnection(int connectionIndex, float inputData1);
 };
 
-/*
-Thing 8) Game
-    1) Amount of stoage used (float)
-    2) Name of game (std::string)
-    3) Amount of memory needed (float)
-    4) Name of Developer (std::string)
-    5) Price of game (float)
-    1) Load levels
-    2) Take input from controls
-    3) Output video signals
- */
+void LogicBoard::processData(int inputData1, int inputData2, LogicBoard::CPU cpu)
+{
+    std::cout << cpu.nameOfCPU << " has processed " << inputData1 + inputData2 << std::endl;
+}
 
+void LogicBoard::showVideoOutput(int inputData1, int pixelsUsed, Display targetDisplay, LogicBoard::CPU theCPU)
+{
+   std::cout << (targetDisplay.numberOfPixels - pixelsUsed) * inputData1 << ": Pixel Data on CPU " << theCPU.nameOfCPU << std::endl;
+}
+
+void LogicBoard::takeInputFromConnection(int connectionIndex, float inputData1)
+{
+    std::cout << "Taking input: " << inputData1 << " at connection: " << connectionIndex << std::endl;
+}
+
+// --------------------------------------------------------------------------
 struct Game
 {
-//     1) Amount of stoage used (float)
-    float stoargeUsed = 30.4f; FIXME spelling
-//     2) Name of game (std::string)
+    float storageUsed = 30.4f; //IDE's need spellcheck
     std::string nameOfGame = "Donkey Kong";
-//     3) Amount of memory needed (float)
     float amountOfMemoryNeeded = 0.4f;
-//     4) Name of Developer (std::string)
     std::string nameOfDeveloper = "Nintendo";
-//     5) Price of game (float)
     float priceOfGame = 19.99f;
-//     1) Load levels
     void loadLevels(int levelNumber, float gameStatus);
-//     2) Take input from controls
     void takeControlInput(Controls currentInput);
-//     3) Output video signals
-    float outputVideoSignal(float gameStatus, int numberOfPixelsUsed, Display targetDisplay); // outputs magical float signal that the logic board could use.
+    float outputVideoSignal(float gameStatus, int numberOfPixelsUsed, Display targetDisplay);
 };
 
-/*
-Thing 9) Outside Case
-    1) Color (std::string)
-    2) Width (float)
-    3) Height (float)
-    4) Depth (float)
-    5) Number of LED lights (int)
-    1) Protect insides
-    2) Display cool color
-    3) Light up
- */
+void Game::loadLevels(int levelNumber, float gameStatus)
+{
+    std::cout << "Loading level " << levelNumber << ". Game status is " << gameStatus << std::endl;
+}
 
+void Game::takeControlInput(Controls currentInput)
+{
+    std::cout << "Currently using " << currentInput.numberOfOtherButtons << " buttons." << std::endl;
+}
+
+float Game::outputVideoSignal(float gameStatus, int numberOfPixelsUsed, Display targetDisplay)
+{
+    return (gameStatus * targetDisplay.numberOfPixels) - numberOfPixelsUsed;
+}
+
+// --------------------------------------------------------------------------
 struct OutsideCase
 {
-//     1) Color (std::string)
     std::string color = "grey";
-//     2) Width (float)
     float width = 6.0f;
-//     3) Height (float)
     float height  = 12.2f;
-//     4) Depth (float)
     float depth = 1.0f;
-//     5) Number of LED lights (int)
-    int numberOfLEDs = 2;
-//     1) Protect insides
+    int totalNumberOfLEDs = 2;
     void protectInsides(int numberOfComponents, LogicBoard theLogicBoard, Display currentDisplay, Controls theControls);
-//     2) Display cool color
     void displayCoolColor(std::string newColor, int numberOfLEDs);
-//     3) Light up
     void lightUpLEDs(int numberOfLEDs);
 };
 
-/*
-Thing 10) Gameboy
-    1) Display
-    2) Controls
-    3) Logic Board
-    4) Game
-    5) Outside Case
-    1) Show visuals
-    2) Play sounds
-    3) Get input from user
- */
+void OutsideCase::protectInsides(int numberOfComponents, LogicBoard theLogicBoard, Display currentDisplay, Controls theControls)
+{
+    std::cout<< "Currently Protecting " << numberOfComponents << " components. Also protecting " << theLogicBoard.speedOfCPU << " and " << currentDisplay.numberOfPixels << " and " << theControls.numberOfOtherButtons << std::endl; 
+}
 
+void OutsideCase::displayCoolColor(std::string newColor, int numberOfLEDs)
+{
+    std::cout << "Change " << numberOfLEDs << " LEDs to color: " << newColor << std::endl;
+}
+
+void OutsideCase::lightUpLEDs(int numberOfLEDs)
+{
+    for(int i = 0; i < numberOfLEDs; i++)
+        {
+            std::cout << "Shine on your crazy LED." << std::endl;
+        }
+}
+
+// --------------------------------------------------------------------------
 struct Gameboy
 {
-//     1) Display
     Display display;
-//     2) Controls
     Controls controls;
-//     3) Logic Board
     LogicBoard logicBoard;
-//     4) Game
     Game currentGame;
-//     5) Outside Case
     OutsideCase outsideCase;
-//     1) Show visuals
-    void showVisuals(Display currentDisplay, LogicBoard logicBoard);
-//     2) Play sounds
-    void playSounds(int numberOfSoundsToPlay, float volume, LogicBoard logicBoard);
-//     3) Get input from user
+    void showVisuals(Display currentDisplay, LogicBoard theLogicBoard);
+    void playSounds(int numberOfSoundsToPlay, float volume, LogicBoard theLogicBoard);
     void getInputFromUser(Controls playerControls);
 };
+
+void Gameboy::showVisuals(Display currentDisplay, LogicBoard theLogicBoard)
+{
+    std::cout << "GPU at speed: " << theLogicBoard.speedOfGPU << " sending to Display with " << currentDisplay.numberOfPixels << " pixels." << std::endl;
+}
+
+void Gameboy::playSounds(int numberOfSoundsToPlay, float volume, LogicBoard theLogicBoard)
+{
+    std::cout << "Using " << theLogicBoard.numberOfConnections << " connections to play " << numberOfSoundsToPlay << " sounds at " << volume << " volume level." << std::endl;
+}
+
+void Gameboy::getInputFromUser(Controls playerControls)
+{
+    std::cout << "Using " << playerControls.numberOfStartButtons + playerControls.numberOfSelectButtons + playerControls.numberOfOtherButtons << " buttons." << std::endl;
+}
+
+
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH

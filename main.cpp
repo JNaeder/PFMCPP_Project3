@@ -129,14 +129,14 @@ struct Person
 };
 
 void Person::Limb::stepForward()
-    {
-        std::cout << "Move Foot Foward!" << std::endl;
-    }
+{
+    std::cout << "Move Foot Foward!" << std::endl;
+}
 
 int Person::Limb::stepSize()
-    {
-        return 2;
-    }
+{
+    return 2;
+}
 
 void Person::run(int howFast, bool startWithLeftFoot)
 {
@@ -224,10 +224,7 @@ struct IPhone
 
 void IPhone::takePhotos(int numberOfPhotos, std::string typeOfPhoto, IPhone::Camera theCamera)
 {
-    for(int i = 0; i < numberOfPhotos; i++)
-        {
-            std::cout << typeOfPhoto << " " << theCamera.manufactuer;   
-        }
+    std::cout << "Take " << numberOfPhotos << " number of " << typeOfPhoto << " from the " << theCamera.manufactuer;
 }
 
 void IPhone::makePhoneCall(int phoneNumber, std::string nameOfContact)
@@ -312,10 +309,7 @@ struct Display
 
 void Display::showVisuals(int pixelsToChange)
 {
-    for(int i = 0; i < pixelsToChange; i++)
-        {
-            std::cout << "Changed Pixel!" << std::endl;
-        }
+    std::cout << "Changed " << pixelsToChange << " pixels!" << std::endl;
 }
 
 void Display::changeBrightness(float newBrightnessLevel)
@@ -449,10 +443,7 @@ void OutsideCase::displayCoolColor(std::string newColor, int numberOfLEDs)
 
 void OutsideCase::lightUpLEDs(int numberOfLEDs)
 {
-    for(int i = 0; i < numberOfLEDs; i++)
-        {
-            std::cout << "Shine on your crazy LED." << std::endl;
-        }
+    std::cout <<  numberOfLEDs << " crazy LEDs are shining on." << std::endl;
 }
 
 // --------------------------------------------------------------------------

@@ -128,6 +128,16 @@ struct Person
     void run(int howFast, bool startWithLeftFoot);
 };
 
+void Person::Limb::stepForward()
+    {
+        std::cout << "Move Foot Foward!" << std::endl;
+    }
+
+int Person::Limb::stepSize()
+    {
+        return 2;
+    }
+
 void Person::run(int howFast, bool startWithLeftFoot)
 {
     if(startWithLeftFoot == true)
@@ -140,7 +150,7 @@ void Person::run(int howFast, bool startWithLeftFoot)
         rightFoot.stepForward();
         leftFoot.stepForward();
     }
-    distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+    distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize() + howFast;
 }
 
  /*

@@ -76,6 +76,7 @@ int main()
 // --------------------------------------------------------------------------
 struct ElectricGuitar
 {
+    ElectricGuitar();
     std::string brandName = "Gibson";
     std::string model = "Les Paul";
     int numberOfStringsOnGuitar = 6;
@@ -88,24 +89,33 @@ struct ElectricGuitar
     int switchPickup(int switchPosition = 0);
 };
 
+ElectricGuitar::ElectricGuitar()
+{
+    std::cout << "ElectricGuitar being constructed!" << std::endl;
+}
+
 void ElectricGuitar::controlVolume(float newVolume)
 {
     volume = newVolume;
+    std::cout << "Changed volume to " << volume << std::endl;
 }
 
 void ElectricGuitar::makeSoundWithStrings(int fretPosition, int numberOfStringsToPlay)
 {
     numberOfStringsOnGuitar -= numberOfStringsToPlay * fretPosition;
+    std::cout << "Make some sound with strings!" << std::endl;
 }
 
 int ElectricGuitar::switchPickup(int switchPosition)
 {
+    std::cout << "Switch Pickup!" << std::endl;
     return switchPosition - currentPickup;
 }
 
 // --------------------------------------------------------------------------
 struct IPhone
 {
+    IPhone();
     float version = 1.0f;
     float amountOfHardDriveSpace = 500.0f;
     std::string phoneCarrier = "Verizon";
@@ -114,7 +124,8 @@ struct IPhone
 
     struct Camera
     {
-        int megapixles = 40;
+        Camera();
+        int megapixels = 40;
         float energyConsumed = 23.4f;
         std::string manufactuer = "Canon";
         float iso = 200.0f;
@@ -124,14 +135,40 @@ struct IPhone
         void changeISO(float newISOValue);
         void captureImage(int numberOfImages);
     };
+
     void takePhotos(int numberOfPhotos, std::string typeOfPhoto, Camera theCamera);
     void makePhoneCall(int phoneNumber, std::string nameOfcontact);
-    void connectToInternet(int ipAddress);
+    void connectToInternet(long ipAddress);
 };
+
+IPhone::Camera::Camera()
+{
+    std::cout << "iPhone Camera being constructed!" << std::endl;
+}
+
+void IPhone::Camera::changeShutterSpeed(float newShutterSpeed)
+{
+    std::cout<< "Changing Camera shutter speed to " << newShutterSpeed << std::endl;    
+}
+
+void IPhone::Camera::changeISO(float newISOValue)
+{
+    std::cout << "Changing ISO to " << newISOValue << std::endl; 
+}
+
+void IPhone::Camera::captureImage(int numberOfImages)
+{
+    std::cout << "Took " << numberOfImages << " images." << std::endl;
+}
+
+IPhone::IPhone()
+{
+    std::cout << "iPhone being constructed!" << std::endl;
+}
 
 void IPhone::takePhotos(int numberOfPhotos, std::string typeOfPhoto, IPhone::Camera theCamera)
 {
-    std::cout << "Take " << numberOfPhotos << " number of " << typeOfPhoto << " from the " << theCamera.manufactuer;
+    std::cout << "Take " << numberOfPhotos << " " << typeOfPhoto << " photos from the " << theCamera.manufactuer << std::endl;
 }
 
 void IPhone::makePhoneCall(int phoneNumber, std::string nameOfContact)
@@ -139,7 +176,7 @@ void IPhone::makePhoneCall(int phoneNumber, std::string nameOfContact)
     std::cout << "Call " << nameOfContact << " at " << phoneNumber << std::endl;
 }
 
-void IPhone::connectToInternet(int ipAddress)
+void IPhone::connectToInternet(long ipAddress)
 {
     std::cout << "Connecting to " << ipAddress << std::endl;
 }
@@ -147,6 +184,7 @@ void IPhone::connectToInternet(int ipAddress)
 // --------------------------------------------------------------------------
 struct MyRefrigerator
 {
+    MyRefrigerator();
     int numberOfEggs = 12;
     int numberOfVegetables = 5;
     float tempOfFridge = 40.0f;
@@ -157,24 +195,33 @@ struct MyRefrigerator
     int numberOfItemsInFridge();
 };
 
+MyRefrigerator::MyRefrigerator()
+{
+    std::cout << "MyRefrigerator being constructed!" << std::endl;
+}
+
 void MyRefrigerator::changeFridgeTemperature(float newTemperature)
 {
     tempOfFridge = newTemperature;
+    std::cout << "Changed Fridge Temperature to " << tempOfFridge << "F" << std::endl;
 }
 
 void MyRefrigerator::changeFreezeTemperature(float newTemperature)
 {
     tempOfFreezer = newTemperature;
+    std::cout << "Changed Freezer Temperature to " << tempOfFreezer << "F" << std::endl;
 }
 
 int MyRefrigerator::numberOfItemsInFridge()
 {
+    std::cout << "Counting items in fridge!" << std::endl;
     return numberOfEggs + numberOfVegetables;
 }
 
 // --------------------------------------------------------------------------
 struct TapeMachine
 {
+    TapeMachine();
     int numberOfTracks = 24;
     float currentSpeedInIPS = 30.0f;
     double currentTimecode = 0.00;
@@ -185,25 +232,33 @@ struct TapeMachine
     void changeSpeedInIPS(float newSpeed);
 };
 
+TapeMachine::TapeMachine()
+{
+    std::cout << "TapeMachine being constructed!" << std::endl;
+}
+
 void TapeMachine::play(float speedInIPS, double fromTime)
 {
-    std::cout << "Playing tape from " << fromTime << " at " << speedInIPS << " inches per second."<< std::endl;
+    std::cout << "Playing tape from --[" << fromTime << "]-- at " << speedInIPS << " inches per second."<< std::endl;
 }
 
 double TapeMachine::showTimeCode(double currentTime)
 {
     currentTimecode = currentTime;
+    std::cout << "Timecode: --[" << currentTimecode << "]--" << std::endl;
     return currentTimecode;
 }
 
 void TapeMachine::changeSpeedInIPS(float newSpeed)
 {
+    std::cout << "Changing speed of tape machine to " << newSpeed << " inches per second." << std::endl;
     currentSpeedInIPS = newSpeed;
 }
 
 // --------------------------------------------------------------------------
 struct Display
 {
+    Display();
     int numberOfPixels = 1080;
     float brightnessLevel = 75.0f;
     float width = 3.5f;
@@ -214,24 +269,32 @@ struct Display
     void consumeEnergy (float amountOfEnergyToConsume = 0);
 };
 
+Display::Display()
+{
+    std::cout << "Display being constructed!" << std::endl;
+}
+
 void Display::showVisuals(int pixelsToChange)
 {
-    std::cout << "Changed " << pixelsToChange << " pixels!" << std::endl;
+    std::cout << "Changed " << pixelsToChange << " pixels on Display!" << std::endl;
 }
 
 void Display::changeBrightness(float newBrightnessLevel)
 {
     brightnessLevel = newBrightnessLevel;
+    std::cout << "Changed Display brightness to " << brightnessLevel << std::endl;
 }
 
 void Display::consumeEnergy(float amountOfEnergyToConsume)
 {
     energyConsumed -= amountOfEnergyToConsume;
+    std::cout << "Display has consumed " << amountOfEnergyToConsume << " energy." << std::endl;
 }
 
 // --------------------------------------------------------------------------
 struct Controls
 {
+    Controls();
     int numberOfStartButtons = 1;
     int numberOfSelectButtons = 1;
     int numberOfDpads = 1;
@@ -241,6 +304,11 @@ struct Controls
     void pauseGame(std::string gameName);
     void startGame(std::string gameName);
 };
+
+Controls::Controls()
+{
+   std::cout << "Controls being constructed!" << std::endl; 
+}
 
 void Controls::takeUserInput(int numberOfButtonsPressed, int dpadDirection)
 {
@@ -260,6 +328,7 @@ void Controls::startGame(std::string gameName)
 // --------------------------------------------------------------------------
 struct LogicBoard
 {
+    LogicBoard();
     int amountOfRam = 4;
     float speedOfCPU = 1.3f;
     int numberOfConnections = 3;
@@ -268,19 +337,46 @@ struct LogicBoard
 
     struct CPU
     {
+        CPU();
         int numberOfCores = 4;
         std::string nameOfCPU = "Ryzen";
         std::string manufactuer = "AMD";
         float overclockedSpeed = 2.0f;
         float currentTemperature = 80.4f;
         void performComputation(int binaryValue1, int binaryValue2);
-        void overclock(float newOverclockSPeed = 2.0f);
+        void overclock(float newOverclockSpeed = 2.0f);
         float returnTempFromCore (int cpuCore);
     };
     void processData(int inputData1, int inputData2, CPU cpu);
     void showVideoOutput(int inputData1, int pixelsUsed, Display targetDisplay, CPU cpu);
     void takeInputFromConnection(int connectionIndex, float inputData1);
 };
+
+LogicBoard::CPU::CPU()
+{
+    std::cout << "CPU on LogicBoard being constructed!" << std::endl;
+}
+
+void LogicBoard::CPU::performComputation(int binaryValue1, int binaryValue2)
+{
+    std::cout << "Performing Computation with " << binaryValue1 << " and " << binaryValue2 << std::endl;
+}
+
+void LogicBoard::CPU::overclock(float newOverclockSpeed)
+{
+    overclockedSpeed = newOverclockSpeed;
+    std::cout << "Changed overclock speed on CPU to " << overclockedSpeed  << " GHz."<< std::endl;
+}
+
+float LogicBoard::CPU::returnTempFromCore(int cpuCore)
+{
+    return cpuCore;
+}
+
+LogicBoard::LogicBoard()
+{
+    std::cout << "LogicBoard being constructed!" << std::endl;
+}
 
 void LogicBoard::processData(int inputData1, int inputData2, LogicBoard::CPU cpu)
 {
@@ -289,7 +385,7 @@ void LogicBoard::processData(int inputData1, int inputData2, LogicBoard::CPU cpu
 
 void LogicBoard::showVideoOutput(int inputData1, int pixelsUsed, Display targetDisplay, LogicBoard::CPU theCPU)
 {
-   std::cout << (targetDisplay.numberOfPixels - pixelsUsed) * inputData1 << ": Pixel Data on CPU " << theCPU.nameOfCPU << std::endl;
+    std::cout << (targetDisplay.numberOfPixels - pixelsUsed) * inputData1 << ": Pixel Data on CPU " << theCPU.nameOfCPU << std::endl;
 }
 
 void LogicBoard::takeInputFromConnection(int connectionIndex, float inputData1)
@@ -300,7 +396,8 @@ void LogicBoard::takeInputFromConnection(int connectionIndex, float inputData1)
 // --------------------------------------------------------------------------
 struct Game
 {
-    float storageUsed = 30.4f; //IDE's need spellcheck
+    Game();
+    float storageUsed = 30.4f;
     std::string nameOfGame = "Donkey Kong";
     float amountOfMemoryNeeded = 0.4f;
     std::string nameOfDeveloper = "Nintendo";
@@ -310,9 +407,14 @@ struct Game
     float outputVideoSignal(float gameStatus, int numberOfPixelsUsed, Display targetDisplay);
 };
 
+Game::Game()
+{
+    std::cout << "Game being constructed!" << std::endl;
+}
+
 void Game::loadLevels(int levelNumber, float gameStatus)
 {
-    std::cout << "Loading level " << levelNumber << ". Game status is " << gameStatus << std::endl;
+    std::cout << "Loading level " << levelNumber << ". Game status is " << gameStatus << "%" << std::endl;
 }
 
 void Game::takeControlInput(Controls currentInput)
@@ -322,12 +424,14 @@ void Game::takeControlInput(Controls currentInput)
 
 float Game::outputVideoSignal(float gameStatus, int numberOfPixelsUsed, Display targetDisplay)
 {
+    std::cout << "Outputing video signal to " << targetDisplay.numberOfPixels << " pixels." << std::endl;
     return (gameStatus * targetDisplay.numberOfPixels) - numberOfPixelsUsed;
 }
 
 // --------------------------------------------------------------------------
 struct OutsideCase
 {
+    OutsideCase();
     std::string color = "grey";
     float width = 6.0f;
     float height  = 12.2f;
@@ -337,6 +441,11 @@ struct OutsideCase
     void displayCoolColor(std::string newColor, int numberOfLEDs);
     void lightUpLEDs(int numberOfLEDs);
 };
+
+OutsideCase::OutsideCase()
+{
+    std::cout << "OutsideCase being constructed!" << std::endl;
+}
 
 void OutsideCase::protectInsides(int numberOfComponents, LogicBoard theLogicBoard, Display currentDisplay, Controls theControls)
 {
@@ -356,6 +465,7 @@ void OutsideCase::lightUpLEDs(int numberOfLEDs)
 // --------------------------------------------------------------------------
 struct Gameboy
 {
+    Gameboy();
     Display display;
     Controls controls;
     LogicBoard logicBoard;
@@ -366,9 +476,14 @@ struct Gameboy
     void getInputFromUser(Controls playerControls);
 };
 
+Gameboy::Gameboy()
+{
+    std::cout << "Gameboy being constructed!" << std::endl;
+}
+
 void Gameboy::showVisuals(Display currentDisplay, LogicBoard theLogicBoard)
 {
-    std::cout << "GPU at speed: " << theLogicBoard.speedOfGPU << " sending to Display with " << currentDisplay.numberOfPixels << " pixels." << std::endl;
+    std::cout << "GPU at speed: " << theLogicBoard.speedOfGPU << " GHz sending to display with " << currentDisplay.numberOfPixels << " pixels." << std::endl;
 }
 
 void Gameboy::playSounds(int numberOfSoundsToPlay, float volume, LogicBoard theLogicBoard)
@@ -378,7 +493,7 @@ void Gameboy::playSounds(int numberOfSoundsToPlay, float volume, LogicBoard theL
 
 void Gameboy::getInputFromUser(Controls playerControls)
 {
-    std::cout << "Using " << playerControls.numberOfStartButtons + playerControls.numberOfSelectButtons + playerControls.numberOfOtherButtons << " buttons." << std::endl;
+    std::cout << "Using " << playerControls.numberOfStartButtons + playerControls.numberOfSelectButtons + playerControls.numberOfOtherButtons << " total buttons." << std::endl;
 }
 
 
@@ -400,8 +515,107 @@ void Gameboy::getInputFromUser(Controls playerControls)
 #include <iostream>
 int main()
 {
-    Example::main(); 
+    Example::main();
+
+    // ElectricGuitar
+    std::cout << "\n-------------ElectricGuitar-------------" << std::endl;
+    ElectricGuitar gibsonLesPaul;
+    ElectricGuitar fenderStrat;
+    gibsonLesPaul.controlVolume(0.95f);
+    fenderStrat.makeSoundWithStrings(8, 4);
+    gibsonLesPaul.switchPickup(2);
+    std::cout << "This guitar has " << gibsonLesPaul.numberOfStringsOnGuitar << " strings." << std::endl;
     
+    // IPhone Camera
+    std::cout << "\n-------------IPhone Camera-------------" << std::endl;
+    IPhone::Camera canonCamera;
+    canonCamera.changeShutterSpeed(60.0f);
+    canonCamera.changeISO(800.0f);
+    canonCamera.captureImage(5);
+    std::cout << "This camera has " << canonCamera.megapixels << " megapixels." << std::endl;
+
+    // IPhone
+    std::cout << "\n-------------IPhone-------------" << std::endl;
+    IPhone iphone12;
+    IPhone iphone4;
+    iphone12.takePhotos(5, "normal", canonCamera);
+    iphone4.makePhoneCall(1234567890, "Mom");
+    iphone12.connectToInternet(192168000000);
+    std::cout << "The phone carrier is " << iphone12.phoneCarrier << std::endl;
     
+    // MyRefrigerator
+    std::cout << "\n-------------MyRefrigerator-------------" << std::endl;
+    MyRefrigerator kitchenFridge;
+    kitchenFridge.changeFridgeTemperature(35.0f);
+    kitchenFridge.changeFreezeTemperature(20.0f);
+    std::cout << kitchenFridge.numberOfItemsInFridge() << " items in fridge." << std::endl;
+    std::cout << "This fridge is currently " << kitchenFridge.percentageFull << "% full." << std::endl;
+
+    // TapeMachine
+    std::cout << "\n-------------TapeMachine-------------" << std::endl;
+    TapeMachine studer;
+    studer.play(30.0f, 0.00);
+    studer.showTimeCode(32.44);
+    studer.changeSpeedInIPS(15.0f);
+    std::cout << "This tape machine has " << studer.numberOfTracks << " tracks." << std::endl;
+
+    // Display
+    std::cout << "\n-------------Display-------------" << std::endl;
+    Display gameboyDisplay;
+    Display gameboyHDDisplay;
+    gameboyDisplay.showVisuals(80);
+    gameboyHDDisplay.changeBrightness(0.75f);
+    gameboyDisplay.consumeEnergy(0.10f);
+    std::cout << "The dimensions of this display are " << gameboyDisplay.width << " inches by " << gameboyDisplay.height << " inches." << std::endl;
+    
+    // Controls
+    std::cout << "\n-------------Controls-------------" << std::endl;
+    Controls gameboyControls;
+    gameboyControls.takeUserInput(2, 3);
+    gameboyControls.pauseGame("Donkey Kong");
+    gameboyControls.startGame("Donkey Kong");
+    std::cout << "There is a total of " << gameboyControls.numberOfDpads << " D-Pads." << std::endl;
+    
+    // LogicBoard CPU
+    std::cout << "\n-------------LogicBoard CPU-------------" << std::endl;
+    LogicBoard::CPU amdCPU;
+    LogicBoard::CPU intelCPU;
+    amdCPU.performComputation(101, 011);
+    intelCPU.overclock(30.5f);
+    std::cout << "Current CPU temp is " << amdCPU.returnTempFromCore(99) << "F" << std::endl;
+    std::cout << "This CPU has " << amdCPU.numberOfCores << " cores." << std::endl;
+    
+    // LogicBoard
+    std::cout << "\n-------------LogicBoard-------------" << std::endl;
+    LogicBoard gameboyLogicBoard;
+    gameboyLogicBoard.processData(324, 22, amdCPU);
+    gameboyLogicBoard.showVideoOutput(111,5234, gameboyDisplay, amdCPU);
+    gameboyLogicBoard.takeInputFromConnection(2, 40.56f);
+    std::cout << "This Logic Board has " << gameboyLogicBoard.amountOfRam << "GB of Ram." << std::endl;
+
+    // Game
+    std::cout << "\n-------------Game-------------" << std::endl;
+    Game donkeyKong;
+    donkeyKong.loadLevels(2, 0.25f);
+    donkeyKong.takeControlInput(gameboyControls);
+    donkeyKong.outputVideoSignal(0.25f, 80, gameboyHDDisplay);
+    std::cout << "This game uses " << donkeyKong.storageUsed << "MB of storage." << std::endl;
+
+    // OutsideCase
+    std::cout << "\n-------------OutsideCase-------------" << std::endl;
+    OutsideCase gameboyCase;
+    gameboyCase.protectInsides(4, gameboyLogicBoard, gameboyDisplay, gameboyControls);
+    gameboyCase.displayCoolColor("red", 10);
+    gameboyCase.lightUpLEDs(50);
+    std::cout << "The color of this case is " << gameboyCase.color << std::endl;
+
+    // Gameboy
+    std::cout << "\n-------------Gameboy-------------" << std::endl;
+    Gameboy theGameboy;
+    theGameboy.showVisuals(gameboyDisplay, gameboyLogicBoard);
+    theGameboy.playSounds(4, 0.75f, gameboyLogicBoard);
+    theGameboy.getInputFromUser(gameboyControls);
+    std::cout << "The Current Game is " << theGameboy.currentGame.nameOfGame << std::endl;
+
     std::cout << "good to go!" << std::endl;
 }
